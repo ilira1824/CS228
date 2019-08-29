@@ -41,17 +41,11 @@
         </preBuild>
       </makefileType>
       <item path="array.cpp" ex="false" tool="1" flavor2="0">
-        <ccTool>
-          <incDir>
-            <pElem></pElem>
-          </incDir>
-        </ccTool>
       </item>
       <folder path="0/prog1">
         <ccTool>
           <incDir>
-            <pElem>prog1</pElem>
-            <pElem></pElem>
+            <pElem>.</pElem>
           </incDir>
         </ccTool>
       </folder>
