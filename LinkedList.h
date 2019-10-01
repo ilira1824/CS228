@@ -29,7 +29,6 @@ public:
   void Reverse(); 
 
   int GetLength();        // Return the number of nodes in the list
-  void Printlist();
 
 private:
   Node *head, *sptr, *temp, *cur;
