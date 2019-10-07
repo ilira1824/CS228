@@ -140,6 +140,7 @@ void LinkedList::Reverse() {
 }
 
 // Return the number of nodes in the list
+// Traverses through list to determine length, doesn't use private length variable in class
 
 int LinkedList::GetLength() {
 	cur = head;
