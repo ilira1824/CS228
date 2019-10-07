@@ -21,7 +21,8 @@ public:
   unsigned int size();        // Return the number of items in the stack
 
 private:
-
+    char arr[20];
+    int openA, openB;
 };
 
 

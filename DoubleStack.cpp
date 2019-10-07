@@ -5,7 +5,9 @@
 
 // Default constructor, the stack is empty to start
 DoubleStack::DoubleStack() {
-// Insert your code here 
+// Insert your code here
+    openA = 0;
+    openB = 19;
 }
 
 
@@ -16,35 +18,59 @@ DoubleStack::~DoubleStack() {
 
 // Add "value" to the top of stack A
 void DoubleStack::PushA(char value) {
-// Insert your code here 
+    if (openA > openB)
+        throw -1;
+    
+    arr[openA] = value;
+    openA++;
 }
 
 // Add "value" to the top of stack B
 void DoubleStack::PushB(char value) {
-// Insert your code here 
+    if (openB < openA)
+        throw -1;
+    
+    arr[openB] = value;
+    openB--;
 }
 
 // Remove and return the item on the top of stack A
 char DoubleStack::PopA() {
-// Insert your code here 
+    if (openA == 0)
+        throw -1;
+    
+    char c = TopA();
+    openA--;
+    return c;
 }
 
 // Remove and return the item on the top of stack B
 char DoubleStack::PopB() {
-// Insert your code here 
+    if (openB == 19)
+        throw -1;
+    
+    char c = TopB();
+    openB++;
+    return c;
 }
 
 // Return the item on the top of stack A
 char DoubleStack::TopA() {
-// Insert your code here 
+    if (openA == 0)
+        throw -1;
+    
+    return arr[openA - 1];
 }
 
 // Return the item on the top of stack B
 char DoubleStack::TopB() {
-// Insert your code here 
+    if (openB == 19)
+        throw -1;
+    
+    return arr[openB + 1];
 }
 
 // Return the number of items in the stack
 unsigned int DoubleStack::size() {
-// Insert your code here 
+    return openA + (19 - openB);
 }
