@@ -16,7 +16,7 @@ void Airport(
         // any given segment to the takeoff queue
         int maxTime, // Maximum number of time segments that a plane
         // can stay in the landing queue
-        int simulationLength// Total number of time segs. to simulate
+        int simulationLength // Total number of time segs. to simulate
         ) 
 
 
@@ -39,17 +39,38 @@ void Airport(
             takeoffQ.push(curTime);
 
         }
+//////////////////////////////////////////////////ADDED 24 OCTOBER 2019////////////////////////////////////////////////////////// 
+// Made it so the code checks if the plane at the front of the queue crashes every time segment
+// Previously only checked crash condition only if the previous plane had finished landing  
+        
+        if (!landingQ.empty()) {                                    // If the landing queue is not empty
 
+           if ((curTime - landingQ.front()) > maxTime) {           // Check if the plane still has fuel
+               crashes++;                                          // Tracks the total number of crashes, adds by 1 if it does
+               landingQ.pop();                                     // Crash the plane and remove it from queue
+               cout << "Plane has crashed at time " << curTime << endl;
+           }
+        }
+  
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
         if (timeFree <= curTime) {                                      // Check to see if a plane is in the process of landing or taking off
                                                                         // Plane cannot land or takeoff if timeFree is greater than curTime
 
             if (!landingQ.empty()) {                                    // If the landing queue is not empty
-
-                if ((curTime - landingQ.front()) > maxTime) {           // Check if the plane still has fuel
-                    crashes++;                                          // Tracks the total number of crashes, adds by 1 if it does
-                    landingQ.pop();                                     // Crash the plane and remove it from queue
-                    cout << "Plane has crashed at time " << curTime << endl;
-                } else {                                                // Plane still has fuel
+                
+////////////////////////////////////////////////REMOVED 24 OCTOBER 2019///////////////////////////////////////////////////////////
+// Removed segment of code that checks crash condition of a plane
+// Moved to an earlier part of the code              
+                
+ //               if ((curTime - landingQ.front()) > maxTime) {           // Check if the plane still has fuel
+ //                   crashes++;                                          // Tracks the total number of crashes, adds by 1 if it does
+ //                   landingQ.pop();                                     // Crash the plane and remove it from queue
+ //                   cout << "Plane has crashed at time " << curTime << endl;
+ //               } else {                                                // Plane still has fuel
+                
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                
                     landingWaits += (curTime - landingQ.front());       // Time plane in landing queue has been waiting is added total time planes in landing queue have waited
                     landingQ.pop();                                     // Remove the plane about to land from queue
                     timeFree += landingTime;                            // Time it takes to land is accounted for
@@ -57,20 +78,19 @@ void Airport(
                     cout << "Plane has landed at time " << curTime << endl;
                 }
 
-            }
             else if (!takeoffQ.empty()) {                               // If the takeoff queue is not empty, ONLY RUNS IF LANDING QUEUE IS EMPTY
 
                 takeoffWaits += (curTime - takeoffQ.front());           // Total time planes for takeoff have been waiting is added by time the next plane for take off has been waiting
-                takeoffQ.pop();                                         // Remove the plane about to takeoff 
-                timeFree += takeoffTime;                                // time it takes to takeoff is accounted for
+                takeoffQ.pop();                                         // Remove the plane about to takeoff from the queue
+                timeFree += takeoffTime;                                // Time it takes to takeoff is accounted for
                 numTakeoffs++;                                          // Total number of takeoffs is tracked and added by 1
                 cout << "Plane has took off at time " << curTime << endl;
 
             }
 
         }
-
     }
+
 
     // If there are still planes in landing queue after simulation is over AND they are operating but not supposed to (no fuel)
     // Crash them and remove them from queue
@@ -79,7 +99,7 @@ void Airport(
         crashes++;
         landingQ.pop();
     }
-
+    
     cout << "Number of crashes: " << crashes << "\n";
     cout << "Number of takeoffs: " << numTakeoffs << " (avg delay " <<
             ((double) takeoffWaits) / ((double) numTakeoffs) << ")\n";
