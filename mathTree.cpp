@@ -43,5 +43,11 @@ string mathTree::ReturnInfix() {
 
 string mathTree::_inorder(treeNode* t)
 {
+    if (t == NULL)
+        return;
+    _inorder(t->lChild);
+    cout << t->value << endl;
+    _inorder(t->rChild);
+    cout << t->rChild << endl;
 // Add content here  
 }
