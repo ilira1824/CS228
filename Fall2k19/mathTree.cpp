@@ -38,7 +38,7 @@ double mathTree::_evaluate(treeNode* t) {
 }
 
 string mathTree::ReturnInfix() {
-    // Add content here
+    // Add cere
 }
 
 string mathTree::_inorder(treeNode* t)
