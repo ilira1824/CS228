@@ -34,7 +34,6 @@ double mathTree::ExpressionValue() {
 }
 
 double mathTree::_evaluate(treeNode* t) {
-// Add content here
 }
 
 string mathTree::ReturnInfix() {
