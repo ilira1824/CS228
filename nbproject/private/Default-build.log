@@ -1,3 +1,0 @@
-g++ -Wall -g -o prog1/main.o -c prog1/main.cpp
-g++ -Wall -g -c array.cpp
-g++ -Wall -g -o program1 prog1/main.o array.o
