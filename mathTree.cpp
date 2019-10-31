@@ -38,7 +38,6 @@ double mathTree::_evaluate(treeNode* t) {
 }
 
 string mathTree::ReturnInfix() {
-    // Add content here
 }
 
 string mathTree::_inorder(treeNode* t)
