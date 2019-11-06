@@ -37,7 +37,7 @@ private:
     string _readex(treeNode* t, string exp);
     string _inorder(treeNode* t);
     
-    treeNode* root, t;
+    treeNode *root, *t;
     
 };
 
