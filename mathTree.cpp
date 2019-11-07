@@ -35,6 +35,8 @@ void mathTree::ReadExpression(string s) {
         
 	if (s2 == "")
             return;
+        else
+            test = "FAIL";
 }
 
 // Populates the node t (which has already been allocated) with the prefix expression exp
@@ -54,22 +56,27 @@ string mathTree::_readex(treeNode* t, string exp) {
 		return "";
 	}
 
-	if (exp.find(" ") == std::string::npos)
-            first = exp;
-	first = exp.substr(0, exp.find(" "));
-	remaining = exp.substr(exp.find(" ") + 1, exp.length());
-        exp = exp.erase(0, exp.find(" "));
+	if (exp.find(" ") == std::string::npos) {
+		first = exp;
+		remaining = "";
+		exp = "";
+	}
+	else {
+		first = exp.substr(0, exp.find(" "));
+		remaining = exp.substr(exp.find(" ") + 1, exp.length());
+		exp = exp.erase(0, exp.find(" "));
+	}
 
 
 	if (first == "+" || first == "*") {
 		t->op = first;
 		t->lChild = NULL;
 		t->rChild = NULL;
-                if (exp == ""){
-                    test = "FAIL";
-                    return "";
-                }
-                
+		if (exp == "") {
+			test = "FAIL";
+			return "";
+		}
+
 	}
 
 	else {
