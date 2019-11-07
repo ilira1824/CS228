@@ -8,7 +8,7 @@ using namespace std;
 
 struct treeNode {
     bool leafNode; // true for leaves, false otherwise
-    char op;       // For non-leaves, this can be '+' or '*'
+    string op;       // For non-leaves, this can be '+' or '*'
     double value;  // Numeric value for leaves
 
     treeNode* lChild; // Pointer to left child node, NULL if we're at a leaf
