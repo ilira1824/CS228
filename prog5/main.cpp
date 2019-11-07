@@ -23,11 +23,11 @@ int main() {
     
     testTree("* 0.2 -1.0", "( 0.2 * -1.0 )", -0.2);
     
-   // testTree("* +", "FAIL", -100000);
+    testTree("* +", "FAIL", -100000);
     
     testTree("3.22", "3.22", 3.22);
     
-   // testTree("+ 1 2 3", "FAIL", -100000);        
+    testTree("+ 1 2 3", "FAIL", -100000);        
             
     return 0;
 }
