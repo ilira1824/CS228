@@ -32,9 +32,9 @@ void mathTree::ReadExpression(string s) {
 
 	root = new treeNode;
 	s2 = _readex(root, s);
-
+        
 	if (s2 == "")
-		return;
+            return;
 }
 
 // Populates the node t (which has already been allocated) with the prefix expression exp
@@ -55,16 +55,21 @@ string mathTree::_readex(treeNode* t, string exp) {
 	}
 
 	if (exp.find(" ") == std::string::npos)
-		first = exp;
+            first = exp;
 	first = exp.substr(0, exp.find(" "));
 	remaining = exp.substr(exp.find(" ") + 1, exp.length());
-	exp = exp.erase(0, exp.find(" "));
+        exp = exp.erase(0, exp.find(" "));
 
 
 	if (first == "+" || first == "*") {
 		t->op = first;
 		t->lChild = NULL;
 		t->rChild = NULL;
+                if (exp == ""){
+                    test = "FAIL";
+                    return "";
+                }
+                
 	}
 
 	else {
@@ -94,7 +99,9 @@ string mathTree::_readex(treeNode* t, string exp) {
 // Returns the result of evaluate() on the root of the tree
 
 double mathTree::ExpressionValue() {
-	return _evaluate(root);
+    if (test == "FAIL")
+        return -100000;
+    return _evaluate(root);
 }
 
 // Returns the value of the expression rooted at t
@@ -122,7 +129,10 @@ double mathTree::_evaluate(treeNode* t) {
 // Traverses the tree, printing out an infix version of the expression, with parentheses around each expression
 
 string mathTree::ReturnInfix() {
-	return _inorder(root);
+    if (test == "FAIL")
+        return test;
+    
+    return _inorder(root);
 }
 
 // Perform an inorder traversal of the tree starting at t

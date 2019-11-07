@@ -38,7 +38,7 @@ private:
     string _inorder(treeNode* t);
     
     treeNode *root, *t;
-    
+    string test;
 };
 
 #endif
