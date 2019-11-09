@@ -36,6 +36,7 @@ private:
     
     string _readex(treeNode* t, string exp);
     string _inorder(treeNode* t);
+    void deleteTree(treeNode *t);
     
     treeNode *root, *t;
     string test;
