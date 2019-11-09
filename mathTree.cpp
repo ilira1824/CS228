@@ -31,7 +31,7 @@ void mathTree::deleteTree(treeNode* t) {
     // Does postorder traversal of list so we don't lose where the children are
     // Recursively deletes both subtrees
     deleteTree(t->lChild);  
-    deleteTree(t->rChild);  
+    deleteTree(t->rChild); 
     
     // Then deletes parent node
     delete(t);  
